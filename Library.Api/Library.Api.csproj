@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -168,12 +170,55 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="DbRepo\LibraryRepo.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryRepo.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbRepo\LibraryRepo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryRepo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbRepo\LibraryRepo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryRepo.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DbRepo\LoginInfo.cs">
+      <DependentUpon>LibraryRepo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbRepo\User.cs">
+      <DependentUpon>LibraryRepo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbRepo\UserBook.cs">
+      <DependentUpon>LibraryRepo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbRepo\UserBooksStatu.cs">
+      <DependentUpon>LibraryRepo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbRepo\UserComment.cs">
+      <DependentUpon>LibraryRepo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DbRepo\UserFavBook.cs">
+      <DependentUpon>LibraryRepo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DbRepo\LibraryRepo.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraryRepo.edmx</DependentUpon>
+      <LastGenOutput>LibraryRepo.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DbRepo\LibraryRepo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LibraryRepo.edmx</DependentUpon>
+      <LastGenOutput>LibraryRepo.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -197,7 +242,17 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="DbRepo\LibraryRepo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LibraryRepo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DbRepo\LibraryRepo.edmx.diagram">
+      <DependentUpon>LibraryRepo.edmx</DependentUpon>
+    </Content>
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

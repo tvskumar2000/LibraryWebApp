@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LibraryAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoginInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="20" />
+          <Property Name="Passcode" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'LibraryApp.dbo.products' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="products">
+          <Property Name="productID" Type="int" />
+          <Property Name="productNAme" Type="varchar" MaxLength="20" />
+          <Property Name="UNitprice" Type="int" />
+        </EntityType>-->
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Gendar" Type="varchar" MaxLength="10" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="15" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
+          <Property Name="DOB" Type="date" />
+          <Property Name="Address" Type="varchar" MaxLength="200" />
+          <Property Name="City" Type="varchar" MaxLength="20" />
+          <Property Name="State" Type="varchar" MaxLength="20" />
+          <Property Name="ZipCode" Type="varchar" MaxLength="8" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserBooks">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="int" Nullable="false" />
+          <Property Name="BookName" Type="int" />
+          <Property Name="BookPrice" Type="int" />
+          <Property Name="BookAuthor" Type="varchar" MaxLength="50" />
+          <Property Name="BookReview" Type="int" />
+        </EntityType>
+        <EntityType Name="UserBooksStatus">
+          <Key>
+            <PropertyRef Name="UserBookCode" />
+          </Key>
+          <Property Name="UserBookCode" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserComments">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Description" Type="char" MaxLength="300" Nullable="false" />
+          <Property Name="PostId" Type="int" />
+          <Property Name="TimeStamp" Type="int" />
+        </EntityType>
+        <EntityType Name="UserFavBook">
+          <Key>
+            <PropertyRef Name="UserBookCode" />
+          </Key>
+          <Property Name="UserBookCode" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__UserBooks__BookI__2D27B809">
+          <End Role="UserBooks" Type="Self.UserBooks" Multiplicity="1" />
+          <End Role="UserBooksStatus" Type="Self.UserBooksStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserBooks">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="UserBooksStatus">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserBooks__UserI__2E1BDC42">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserBooksStatus" Type="Self.UserBooksStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBooksStatus">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserComme__UserI__2F10007B">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserComments" Type="Self.UserComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserComments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserFavBo__BookI__30F848ED">
+          <End Role="UserBooks" Type="Self.UserBooks" Multiplicity="1" />
+          <End Role="UserFavBook" Type="Self.UserFavBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserBooks">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="UserFavBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserFavBo__UserI__300424B4">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserFavBook" Type="Self.UserFavBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFavBook">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibraryAppModelStoreContainer">
+          <EntitySet Name="LoginInfo" EntityType="Self.LoginInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserBooks" EntityType="Self.UserBooks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserBooksStatus" EntityType="Self.UserBooksStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserComments" EntityType="Self.UserComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserFavBook" EntityType="Self.UserFavBook" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__UserBooks__BookI__2D27B809" Association="Self.FK__UserBooks__BookI__2D27B809">
+            <End Role="UserBooks" EntitySet="UserBooks" />
+            <End Role="UserBooksStatus" EntitySet="UserBooksStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserBooks__UserI__2E1BDC42" Association="Self.FK__UserBooks__UserI__2E1BDC42">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserBooksStatus" EntitySet="UserBooksStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserComme__UserI__2F10007B" Association="Self.FK__UserComme__UserI__2F10007B">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserComments" EntitySet="UserComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserFavBo__BookI__30F848ED" Association="Self.FK__UserFavBo__BookI__30F848ED">
+            <End Role="UserBooks" EntitySet="UserBooks" />
+            <End Role="UserFavBook" EntitySet="UserFavBook" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserFavBo__UserI__300424B4" Association="Self.FK__UserFavBo__UserI__300424B4">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFavBook" EntitySet="UserFavBook" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibraryAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LoginInfo">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Passcode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gendar" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DOB" Type="DateTime" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ZipCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <NavigationProperty Name="UserBooksStatus" Relationship="Self.FK__UserBooks__UserI__2E1BDC42" FromRole="User" ToRole="UserBooksStatus" />
+          <NavigationProperty Name="UserComments" Relationship="Self.FK__UserComme__UserI__2F10007B" FromRole="User" ToRole="UserComments" />
+          <NavigationProperty Name="UserFavBooks" Relationship="Self.FK__UserFavBo__UserI__300424B4" FromRole="User" ToRole="UserFavBook" />
+        </EntityType>
+        <EntityType Name="UserBook">
+          <Key>
+            <PropertyRef Name="BookId" />
+          </Key>
+          <Property Name="BookId" Type="Int32" Nullable="false" />
+          <Property Name="BookName" Type="Int32" />
+          <Property Name="BookPrice" Type="Int32" />
+          <Property Name="BookAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BookReview" Type="Int32" />
+          <NavigationProperty Name="UserBooksStatus" Relationship="Self.FK__UserBooks__BookI__2D27B809" FromRole="UserBooks" ToRole="UserBooksStatus" />
+          <NavigationProperty Name="UserFavBooks" Relationship="Self.FK__UserFavBo__BookI__30F848ED" FromRole="UserBooks" ToRole="UserFavBook" />
+        </EntityType>
+        <EntityType Name="UserBooksStatu">
+          <Key>
+            <PropertyRef Name="UserBookCode" />
+          </Key>
+          <Property Name="UserBookCode" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UserBooks__UserI__2E1BDC42" FromRole="UserBooksStatus" ToRole="User" />
+          <NavigationProperty Name="UserBook" Relationship="Self.FK__UserBooks__BookI__2D27B809" FromRole="UserBooksStatus" ToRole="UserBooks" />
+        </EntityType>
+        <EntityType Name="UserComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PostId" Type="Int32" />
+          <Property Name="TimeStamp" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UserComme__UserI__2F10007B" FromRole="UserComments" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserFavBook">
+          <Key>
+            <PropertyRef Name="UserBookCode" />
+          </Key>
+          <Property Name="UserBookCode" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UserFavBo__UserI__300424B4" FromRole="UserFavBook" ToRole="User" />
+          <NavigationProperty Name="UserBook" Relationship="Self.FK__UserFavBo__BookI__30F848ED" FromRole="UserFavBook" ToRole="UserBooks" />
+        </EntityType>
+        <Association Name="FK__UserBooks__UserI__2E1BDC42">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserBooksStatus" Type="Self.UserBooksStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBooksStatus">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserComme__UserI__2F10007B">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserComments" Type="Self.UserComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserComments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserFavBo__UserI__300424B4">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserFavBook" Type="Self.UserFavBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFavBook">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserBooks__BookI__2D27B809">
+          <End Role="UserBooks" Type="Self.UserBook" Multiplicity="1" />
+          <End Role="UserBooksStatus" Type="Self.UserBooksStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserBooks">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="UserBooksStatus">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserFavBo__BookI__30F848ED">
+          <End Role="UserBooks" Type="Self.UserBook" Multiplicity="1" />
+          <End Role="UserFavBook" Type="Self.UserFavBook" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserBooks">
+              <PropertyRef Name="BookId" />
+            </Principal>
+            <Dependent Role="UserFavBook">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibraryAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoginInfoes" EntityType="Self.LoginInfo" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserBooks" EntityType="Self.UserBook" />
+          <EntitySet Name="UserBooksStatus" EntityType="Self.UserBooksStatu" />
+          <EntitySet Name="UserComments" EntityType="Self.UserComment" />
+          <EntitySet Name="UserFavBooks" EntityType="Self.UserFavBook" />
+          <AssociationSet Name="FK__UserBooks__UserI__2E1BDC42" Association="Self.FK__UserBooks__UserI__2E1BDC42">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserBooksStatus" EntitySet="UserBooksStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserComme__UserI__2F10007B" Association="Self.FK__UserComme__UserI__2F10007B">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserComments" EntitySet="UserComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserFavBo__UserI__300424B4" Association="Self.FK__UserFavBo__UserI__300424B4">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserFavBook" EntitySet="UserFavBooks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserBooks__BookI__2D27B809" Association="Self.FK__UserBooks__BookI__2D27B809">
+            <End Role="UserBooks" EntitySet="UserBooks" />
+            <End Role="UserBooksStatus" EntitySet="UserBooksStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserFavBo__BookI__30F848ED" Association="Self.FK__UserFavBo__BookI__30F848ED">
+            <End Role="UserBooks" EntitySet="UserBooks" />
+            <End Role="UserFavBook" EntitySet="UserFavBooks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibraryAppModelStoreContainer" CdmEntityContainer="LibraryAppEntities">
+          <EntitySetMapping Name="LoginInfoes">
+            <EntityTypeMapping TypeName="LibraryAppModel.LoginInfo">
+              <MappingFragment StoreEntitySet="LoginInfo">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Passcode" ColumnName="Passcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LibraryAppModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Gendar" ColumnName="Gendar" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBooks">
+            <EntityTypeMapping TypeName="LibraryAppModel.UserBook">
+              <MappingFragment StoreEntitySet="UserBooks">
+                <ScalarProperty Name="BookId" ColumnName="BookId" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="BookPrice" ColumnName="BookPrice" />
+                <ScalarProperty Name="BookAuthor" ColumnName="BookAuthor" />
+                <ScalarProperty Name="BookReview" ColumnName="BookReview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBooksStatus">
+            <EntityTypeMapping TypeName="LibraryAppModel.UserBooksStatu">
+              <MappingFragment StoreEntitySet="UserBooksStatus">
+                <ScalarProperty Name="UserBookCode" ColumnName="UserBookCode" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserComments">
+            <EntityTypeMapping TypeName="LibraryAppModel.UserComment">
+              <MappingFragment StoreEntitySet="UserComments">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserFavBooks">
+            <EntityTypeMapping TypeName="LibraryAppModel.UserFavBook">
+              <MappingFragment StoreEntitySet="UserFavBook">
+                <ScalarProperty Name="UserBookCode" ColumnName="UserBookCode" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

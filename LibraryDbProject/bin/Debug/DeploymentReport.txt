@@ -1,0 +1,25 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[LoginInfo] (Table)
+       [dbo].[User] (Table)
+       [dbo].[UserBooks] (Table)
+       [dbo].[UserBooksStatus] (Table)
+       [dbo].[UserComments] (Table)
+       [dbo].[UserFavBook] (Table)
+       Foreign Key: unnamed constraint on [dbo].[UserBooksStatus] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[UserBooksStatus] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[UserComments] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[UserFavBook] (Foreign Key)
+       Foreign Key: unnamed constraint on [dbo].[UserFavBook] (Foreign Key)
+
+** Supporting actions

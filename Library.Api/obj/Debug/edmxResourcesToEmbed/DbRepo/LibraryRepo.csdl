@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LoginInfo">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Passcode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gendar" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ZipCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsAdmin" Type="Boolean" />
+    <NavigationProperty Name="UserBooksStatus" Relationship="Self.FK__UserBooks__UserI__2E1BDC42" FromRole="User" ToRole="UserBooksStatus" />
+    <NavigationProperty Name="UserComments" Relationship="Self.FK__UserComme__UserI__2F10007B" FromRole="User" ToRole="UserComments" />
+    <NavigationProperty Name="UserFavBooks" Relationship="Self.FK__UserFavBo__UserI__300424B4" FromRole="User" ToRole="UserFavBook" />
+  </EntityType>
+  <EntityType Name="UserBook">
+    <Key>
+      <PropertyRef Name="BookId" />
+    </Key>
+    <Property Name="BookId" Type="Int32" Nullable="false" />
+    <Property Name="BookName" Type="Int32" />
+    <Property Name="BookPrice" Type="Int32" />
+    <Property Name="BookAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BookReview" Type="Int32" />
+    <NavigationProperty Name="UserBooksStatus" Relationship="Self.FK__UserBooks__BookI__2D27B809" FromRole="UserBooks" ToRole="UserBooksStatus" />
+    <NavigationProperty Name="UserFavBooks" Relationship="Self.FK__UserFavBo__BookI__30F848ED" FromRole="UserBooks" ToRole="UserFavBook" />
+  </EntityType>
+  <EntityType Name="UserBooksStatu">
+    <Key>
+      <PropertyRef Name="UserBookCode" />
+    </Key>
+    <Property Name="UserBookCode" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserBooks__UserI__2E1BDC42" FromRole="UserBooksStatus" ToRole="User" />
+    <NavigationProperty Name="UserBook" Relationship="Self.FK__UserBooks__BookI__2D27B809" FromRole="UserBooksStatus" ToRole="UserBooks" />
+  </EntityType>
+  <EntityType Name="UserComment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PostId" Type="Int32" />
+    <Property Name="TimeStamp" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserComme__UserI__2F10007B" FromRole="UserComments" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserFavBook">
+    <Key>
+      <PropertyRef Name="UserBookCode" />
+    </Key>
+    <Property Name="UserBookCode" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserFavBo__UserI__300424B4" FromRole="UserFavBook" ToRole="User" />
+    <NavigationProperty Name="UserBook" Relationship="Self.FK__UserFavBo__BookI__30F848ED" FromRole="UserFavBook" ToRole="UserBooks" />
+  </EntityType>
+  <Association Name="FK__UserBooks__UserI__2E1BDC42">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserBooksStatus" Type="Self.UserBooksStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserBooksStatus">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserComme__UserI__2F10007B">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserComments" Type="Self.UserComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserComments">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFavBo__UserI__300424B4">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserFavBook" Type="Self.UserFavBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserFavBook">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserBooks__BookI__2D27B809">
+    <End Role="UserBooks" Type="Self.UserBook" Multiplicity="1" />
+    <End Role="UserBooksStatus" Type="Self.UserBooksStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserBooks">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="UserBooksStatus">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserFavBo__BookI__30F848ED">
+    <End Role="UserBooks" Type="Self.UserBook" Multiplicity="1" />
+    <End Role="UserFavBook" Type="Self.UserFavBook" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserBooks">
+        <PropertyRef Name="BookId" />
+      </Principal>
+      <Dependent Role="UserFavBook">
+        <PropertyRef Name="BookID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibraryAppEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LoginInfoes" EntityType="Self.LoginInfo" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserBooks" EntityType="Self.UserBook" />
+    <EntitySet Name="UserBooksStatus" EntityType="Self.UserBooksStatu" />
+    <EntitySet Name="UserComments" EntityType="Self.UserComment" />
+    <EntitySet Name="UserFavBooks" EntityType="Self.UserFavBook" />
+    <AssociationSet Name="FK__UserBooks__UserI__2E1BDC42" Association="Self.FK__UserBooks__UserI__2E1BDC42">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserBooksStatus" EntitySet="UserBooksStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserComme__UserI__2F10007B" Association="Self.FK__UserComme__UserI__2F10007B">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserComments" EntitySet="UserComments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFavBo__UserI__300424B4" Association="Self.FK__UserFavBo__UserI__300424B4">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserFavBook" EntitySet="UserFavBooks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserBooks__BookI__2D27B809" Association="Self.FK__UserBooks__BookI__2D27B809">
+      <End Role="UserBooks" EntitySet="UserBooks" />
+      <End Role="UserBooksStatus" EntitySet="UserBooksStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserFavBo__BookI__30F848ED" Association="Self.FK__UserFavBo__BookI__30F848ED">
+      <End Role="UserBooks" EntitySet="UserBooks" />
+      <End Role="UserFavBook" EntitySet="UserFavBooks" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
