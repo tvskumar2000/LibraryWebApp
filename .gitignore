@@ -4,3 +4,7 @@
 
 *.user
 *.dbmdl
+*.dll
+*.pdb
+*.suo
+*.cache
