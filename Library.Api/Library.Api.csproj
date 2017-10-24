@@ -170,55 +170,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DbRepo\LibraryRepo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryRepo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbRepo\LibraryRepo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryRepo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbRepo\LibraryRepo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LibraryRepo.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="DbRepo\LoginInfo.cs">
-      <DependentUpon>LibraryRepo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbRepo\User.cs">
-      <DependentUpon>LibraryRepo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbRepo\UserBook.cs">
-      <DependentUpon>LibraryRepo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbRepo\UserBooksStatu.cs">
-      <DependentUpon>LibraryRepo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbRepo\UserComment.cs">
-      <DependentUpon>LibraryRepo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DbRepo\UserFavBook.cs">
-      <DependentUpon>LibraryRepo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DbRepo\LibraryRepo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LibraryRepo.edmx</DependentUpon>
-      <LastGenOutput>LibraryRepo.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DbRepo\LibraryRepo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LibraryRepo.edmx</DependentUpon>
-      <LastGenOutput>LibraryRepo.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -242,13 +199,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="DbRepo\LibraryRepo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LibraryRepo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="DbRepo\LibraryRepo.edmx.diagram">
-      <DependentUpon>LibraryRepo.edmx</DependentUpon>
-    </Content>
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
-﻿using Library.Api.DbRepo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,15 +7,13 @@ using System.Web.Http;
 
 namespace Library.Api.Controllers
 {
-    [Authorize]
     public class ValuesController : ApiController
     {
-        LibraryAppEntities dbRepo = new LibraryAppEntities();
 
         // GET api/values
-        public IEnumerable<UserBook> Get()
+        public IEnumerable<string> Get()
         {
-            return dbRepo.UserBooks.ToList();
+            return new List<string> { "Hello", "World" };
         }
 
         // GET api/values/5

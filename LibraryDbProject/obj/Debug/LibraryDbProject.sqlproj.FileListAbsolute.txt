@@ -7,3 +7,10 @@ A:\assignment .net\LibraryWebApp\LibraryDbProject\obj\Debug\postdeploy.sql
 A:\assignment .net\LibraryWebApp\LibraryDbProject\obj\Debug\predeploy.sql
 A:\assignment .net\LibraryWebApp\LibraryDbProject\obj\Debug\LibraryDbProject.dll
 A:\assignment .net\LibraryWebApp\LibraryDbProject\obj\Debug\LibraryDbProject.pdb
+D:\Repo\LibraryWebApp\LibraryDbProject\bin\Debug\LibraryDbProject.dacpac
+D:\Repo\LibraryWebApp\LibraryDbProject\obj\Debug\Model.xml
+D:\Repo\LibraryWebApp\LibraryDbProject\obj\Debug\refactor.xml
+D:\Repo\LibraryWebApp\LibraryDbProject\obj\Debug\postdeploy.sql
+D:\Repo\LibraryWebApp\LibraryDbProject\obj\Debug\predeploy.sql
+D:\Repo\LibraryWebApp\LibraryDbProject\obj\Debug\LibraryDbProject.dll
+D:\Repo\LibraryWebApp\LibraryDbProject\obj\Debug\LibraryDbProject.pdb
