@@ -1,0 +1,68 @@
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.Tests.dll.config
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.Tests.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.Tests.pdb
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Newtonsoft.Json.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Net.Http.Formatting.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Helpers.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.WebHost.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Mvc.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Razor.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Optimization.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\EntityFramework.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.Owin.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Owin.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.pdb
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\Newtonsoft.Json.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Net.Http.Formatting.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Helpers.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.WebHost.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Mvc.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Razor.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Optimization.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\EntityFramework.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.Owin.xml
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\obj\Debug\Library.Api.Tests.csprojResolveAssemblyReference.cache
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\obj\Debug\Library.Api.Tests.dll
+A:\assignment .net\LibraryWebApp\Library.Api.Tests\obj\Debug\Library.Api.Tests.pdb
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.Tests.dll.config
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.Tests.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.Tests.pdb
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\Microsoft.Web.Infrastructure.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\Newtonsoft.Json.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Net.Http.Formatting.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Helpers.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.WebHost.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Mvc.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Razor.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.Deployment.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.Razor.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Optimization.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\Library.Api.pdb
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\Newtonsoft.Json.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Net.Http.Formatting.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Helpers.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Http.WebHost.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Mvc.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Razor.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.Deployment.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.WebPages.Razor.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\bin\Debug\System.Web.Optimization.xml
+D:\Repo\LibraryWebApp\Library.Api.Tests\obj\Debug\Library.Api.Tests.csprojResolveAssemblyReference.cache
+D:\Repo\LibraryWebApp\Library.Api.Tests\obj\Debug\Library.Api.Tests.dll
+D:\Repo\LibraryWebApp\Library.Api.Tests\obj\Debug\Library.Api.Tests.pdb
